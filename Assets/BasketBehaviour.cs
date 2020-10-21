@@ -19,4 +19,11 @@ public class BasketBehaviour : MonoBehaviour
         pos.x = convMouse.x;
         transform.position = pos;
     }
+    
+    private void OnCollisionEnter2D(Collision2D coll) {
+        if(coll.gameObject.tag == "apple") {
+            Destroy(coll.gameObject);
+            GameObject.Find("ScreenBoundaries").GetComponent<Boundaries>().Score();
+        }
+    }
 }
